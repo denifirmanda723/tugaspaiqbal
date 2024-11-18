@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h3 class="text-center mb-4">Login</h3>
+            <form id="loginForm">
+                <!-- Email -->
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Masukkan email" required>
+                </div>
+                <!-- Password -->
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Masukkan password" required>
+                </div>
+                <!-- Buttons -->
+                <div class="d-flex justify-content-between gap-2">
+                    <button type="button" class="btn btn-secondary" id="cancelButton">Batal</button>
+                    <button type="button" class="btn btn-link" id="registerButton">Daftar</button>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Event listeners untuk tombol
+        const loginForm = document.getElementById('loginForm');
+        const cancelButton = document.getElementById('cancelButton');
+        const registerButton = document.getElementById('registerButton');
+
+        // Login - Arahkan ke halaman dashboard
+        loginForm.addEventListener('submit', function (e) {
+            e.preventDefault(); // Cegah pengiriman form default
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (email === "admin@gmail.com" && password === "admin123") {
+                alert("Login berhasil!");
+                window.location.href = 'Qdashbord.html'; 
+            } else {
+                alert("Email atau password salah!");
+            }
+        });
+
+        // Daftar - Arahkan ke halaman pendaftaran
+        registerButton.addEventListener('click', function () {
+            window.location.href = 'pendaftaran.html';
+        });
+
+        // Batal - Reset form atau kembali
+        cancelButton.addEventListener('click', function () {
+            if (confirm('Apakah Anda ingin membatalkan login?')) {
+                loginForm.reset();
+            }
+        });
+    </script>
+</body>
+</html>
